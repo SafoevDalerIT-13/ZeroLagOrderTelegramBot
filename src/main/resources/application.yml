@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: order-bot
+
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_bot
+    username: postgres
+    password: 233122
+    driver-class-name: org.postgresql.Driver
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    database: postgresql
+
+# Telegram Bot Configuration
+telegram:
+  bot:
+    token: ${BOT_TOKEN}
+    username: ${BOT_USERNAME}
+
+# Logging
+logging:
+  level:
+    com.safoev: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
