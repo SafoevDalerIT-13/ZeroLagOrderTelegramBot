@@ -1,4 +1,4 @@
-package com.safoev.user;
+package com.safoev.user.domain.db;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,32 +24,14 @@ public class User {
     @Column(name = "telegram_id", unique = true, nullable = false)
     private Long telegramId;
 
-    @Column(name = "telegram_username")
-    private String telegramUsername;
-
-    @Column(name = "first_name")
+    @Column(name = "first_name",length = 50)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name",length = 50)
     private String lastName;
 
     @Column(unique = true)
     private String phone;
-
-    @Column(nullable = false)
-    private String password;
-
-    private String email;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
-
-    private Integer age;
-
-    private String address;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -63,5 +44,6 @@ public class User {
     @Column(name = "registered_at")
     private LocalDateTime registeredAt;
 
-    private boolean enabled = true;
+    @Column(name = "telegram_user_name")
+    private String telegramUserName;
 }
